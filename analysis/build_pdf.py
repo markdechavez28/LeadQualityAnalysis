@@ -31,7 +31,7 @@ GRADIENT_STOPS = [colors.HexColor("#ffb020"), colors.HexColor("#ff5a2e"), colors
 GRADIENT_POS = [0, 0.55, 1]
 
 CHARTS = "../output/charts"
-SITE_URL = "https://analyticschallenge.vercel.app/"
+SITE_URL = "https://rzr_analyticschallenge.vercel.app/"
 AUTHOR_NAME = "Mark Jerome De Chavez"
 AUTHOR_LINKEDIN = "https://www.linkedin.com/in/markdechavez128/"
 AUTHOR_PORTFOLIO = "https://port2026-chi.vercel.app/"
