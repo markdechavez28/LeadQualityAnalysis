@@ -1,0 +1,9 @@
+Q1 TREND ANALYSIS RESULTS
+============================================================
+Logistic regression Closed ~ week_num, n=3021
+  coef=-0.02580, OR/week=0.9745 (95% CI 0.9564-0.9930), p=0.0072
+  Implied OR over 25-week span=0.525
+Mann-Kendall on weekly Closed rate: S=-120.0, z=-2.481, p=0.0131, trend=decreasing
+
+Secondary (Good rate) logistic regression: coef=0.0019, p=0.8068
+Secondary Mann-Kendall (Good rate): S=12.0, z=0.229, p=0.8186, trend=increasing

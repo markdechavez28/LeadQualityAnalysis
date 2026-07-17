@@ -1,0 +1,1083 @@
+{
+ "meta": {
+  "n_total": 3021,
+  "date_min": "2009-04-02",
+  "date_max": "2009-09-30"
+ },
+ "quality_breakdown": {
+  "closed": 245,
+  "good": 393,
+  "bad": 488,
+  "unknown": 2140,
+  "total": 3021
+ },
+ "trend": {
+  "weekly": [
+   {
+    "week": "2009-03-30",
+    "n": 37,
+    "closed": 3,
+    "rate": 0.0811
+   },
+   {
+    "week": "2009-04-06",
+    "n": 119,
+    "closed": 15,
+    "rate": 0.1261
+   },
+   {
+    "week": "2009-04-13",
+    "n": 125,
+    "closed": 16,
+    "rate": 0.128
+   },
+   {
+    "week": "2009-04-20",
+    "n": 155,
+    "closed": 14,
+    "rate": 0.0903
+   },
+   {
+    "week": "2009-04-27",
+    "n": 129,
+    "closed": 10,
+    "rate": 0.0775
+   },
+   {
+    "week": "2009-05-04",
+    "n": 113,
+    "closed": 10,
+    "rate": 0.0885
+   },
+   {
+    "week": "2009-05-11",
+    "n": 166,
+    "closed": 12,
+    "rate": 0.0723
+   },
+   {
+    "week": "2009-05-18",
+    "n": 122,
+    "closed": 8,
+    "rate": 0.0656
+   },
+   {
+    "week": "2009-05-25",
+    "n": 132,
+    "closed": 5,
+    "rate": 0.0379
+   },
+   {
+    "week": "2009-06-01",
+    "n": 137,
+    "closed": 10,
+    "rate": 0.073
+   },
+   {
+    "week": "2009-06-08",
+    "n": 165,
+    "closed": 17,
+    "rate": 0.103
+   },
+   {
+    "week": "2009-06-15",
+    "n": 153,
+    "closed": 21,
+    "rate": 0.1373
+   },
+   {
+    "week": "2009-06-22",
+    "n": 107,
+    "closed": 9,
+    "rate": 0.0841
+   },
+   {
+    "week": "2009-06-29",
+    "n": 101,
+    "closed": 9,
+    "rate": 0.0891
+   },
+   {
+    "week": "2009-07-06",
+    "n": 104,
+    "closed": 8,
+    "rate": 0.0769
+   },
+   {
+    "week": "2009-07-13",
+    "n": 115,
+    "closed": 6,
+    "rate": 0.0522
+   },
+   {
+    "week": "2009-07-20",
+    "n": 144,
+    "closed": 11,
+    "rate": 0.0764
+   },
+   {
+    "week": "2009-07-27",
+    "n": 136,
+    "closed": 9,
+    "rate": 0.0662
+   },
+   {
+    "week": "2009-08-03",
+    "n": 95,
+    "closed": 11,
+    "rate": 0.1158
+   },
+   {
+    "week": "2009-08-10",
+    "n": 116,
+    "closed": 14,
+    "rate": 0.1207
+   },
+   {
+    "week": "2009-08-17",
+    "n": 104,
+    "closed": 4,
+    "rate": 0.0385
+   },
+   {
+    "week": "2009-08-24",
+    "n": 89,
+    "closed": 7,
+    "rate": 0.0787
+   },
+   {
+    "week": "2009-08-31",
+    "n": 74,
+    "closed": 3,
+    "rate": 0.0405
+   },
+   {
+    "week": "2009-09-07",
+    "n": 65,
+    "closed": 5,
+    "rate": 0.0769
+   },
+   {
+    "week": "2009-09-14",
+    "n": 95,
+    "closed": 4,
+    "rate": 0.0421
+   },
+   {
+    "week": "2009-09-21",
+    "n": 82,
+    "closed": 4,
+    "rate": 0.0488
+   },
+   {
+    "week": "2009-09-28",
+    "n": 41,
+    "closed": 0,
+    "rate": 0.0
+   }
+  ],
+  "monthly": [
+   {
+    "month": "2009-04",
+    "n": 518,
+    "closed": 56,
+    "rate": 0.1081
+   },
+   {
+    "month": "2009-05",
+    "n": 580,
+    "closed": 37,
+    "rate": 0.0638
+   },
+   {
+    "month": "2009-06",
+    "n": 609,
+    "closed": 63,
+    "rate": 0.1034
+   },
+   {
+    "month": "2009-07",
+    "n": 532,
+    "closed": 33,
+    "rate": 0.062
+   },
+   {
+    "month": "2009-08",
+    "n": 438,
+    "closed": 41,
+    "rate": 0.0936
+   },
+   {
+    "month": "2009-09",
+    "n": 344,
+    "closed": 15,
+    "rate": 0.0436
+   }
+  ],
+  "trend_line": [
+   {
+    "date": "2009-04-02",
+    "rate": 0.1045
+   },
+   {
+    "date": "2009-04-05",
+    "rate": 0.1035
+   },
+   {
+    "date": "2009-04-08",
+    "rate": 0.1025
+   },
+   {
+    "date": "2009-04-11",
+    "rate": 0.1015
+   },
+   {
+    "date": "2009-04-14",
+    "rate": 0.1005
+   },
+   {
+    "date": "2009-04-17",
+    "rate": 0.0995
+   },
+   {
+    "date": "2009-04-20",
+    "rate": 0.0985
+   },
+   {
+    "date": "2009-04-23",
+    "rate": 0.0976
+   },
+   {
+    "date": "2009-04-26",
+    "rate": 0.0966
+   },
+   {
+    "date": "2009-04-29",
+    "rate": 0.0957
+   },
+   {
+    "date": "2009-05-02",
+    "rate": 0.0947
+   },
+   {
+    "date": "2009-05-05",
+    "rate": 0.0938
+   },
+   {
+    "date": "2009-05-08",
+    "rate": 0.0929
+   },
+   {
+    "date": "2009-05-11",
+    "rate": 0.092
+   },
+   {
+    "date": "2009-05-14",
+    "rate": 0.091
+   },
+   {
+    "date": "2009-05-17",
+    "rate": 0.0901
+   },
+   {
+    "date": "2009-05-20",
+    "rate": 0.0892
+   },
+   {
+    "date": "2009-05-23",
+    "rate": 0.0884
+   },
+   {
+    "date": "2009-05-26",
+    "rate": 0.0875
+   },
+   {
+    "date": "2009-05-29",
+    "rate": 0.0866
+   },
+   {
+    "date": "2009-06-01",
+    "rate": 0.0858
+   },
+   {
+    "date": "2009-06-04",
+    "rate": 0.0849
+   },
+   {
+    "date": "2009-06-07",
+    "rate": 0.0841
+   },
+   {
+    "date": "2009-06-10",
+    "rate": 0.0832
+   },
+   {
+    "date": "2009-06-12",
+    "rate": 0.0824
+   },
+   {
+    "date": "2009-06-15",
+    "rate": 0.0816
+   },
+   {
+    "date": "2009-06-18",
+    "rate": 0.0808
+   },
+   {
+    "date": "2009-06-21",
+    "rate": 0.0799
+   },
+   {
+    "date": "2009-06-24",
+    "rate": 0.0791
+   },
+   {
+    "date": "2009-06-27",
+    "rate": 0.0784
+   },
+   {
+    "date": "2009-06-30",
+    "rate": 0.0776
+   },
+   {
+    "date": "2009-07-03",
+    "rate": 0.0768
+   },
+   {
+    "date": "2009-07-06",
+    "rate": 0.076
+   },
+   {
+    "date": "2009-07-09",
+    "rate": 0.0753
+   },
+   {
+    "date": "2009-07-12",
+    "rate": 0.0745
+   },
+   {
+    "date": "2009-07-15",
+    "rate": 0.0737
+   },
+   {
+    "date": "2009-07-18",
+    "rate": 0.073
+   },
+   {
+    "date": "2009-07-21",
+    "rate": 0.0723
+   },
+   {
+    "date": "2009-07-24",
+    "rate": 0.0715
+   },
+   {
+    "date": "2009-07-27",
+    "rate": 0.0708
+   },
+   {
+    "date": "2009-07-30",
+    "rate": 0.0701
+   },
+   {
+    "date": "2009-08-02",
+    "rate": 0.0694
+   },
+   {
+    "date": "2009-08-05",
+    "rate": 0.0687
+   },
+   {
+    "date": "2009-08-08",
+    "rate": 0.068
+   },
+   {
+    "date": "2009-08-11",
+    "rate": 0.0673
+   },
+   {
+    "date": "2009-08-14",
+    "rate": 0.0666
+   },
+   {
+    "date": "2009-08-17",
+    "rate": 0.0659
+   },
+   {
+    "date": "2009-08-20",
+    "rate": 0.0653
+   },
+   {
+    "date": "2009-08-23",
+    "rate": 0.0646
+   },
+   {
+    "date": "2009-08-26",
+    "rate": 0.064
+   },
+   {
+    "date": "2009-08-29",
+    "rate": 0.0633
+   },
+   {
+    "date": "2009-09-01",
+    "rate": 0.0627
+   },
+   {
+    "date": "2009-09-04",
+    "rate": 0.062
+   },
+   {
+    "date": "2009-09-06",
+    "rate": 0.0614
+   },
+   {
+    "date": "2009-09-09",
+    "rate": 0.0608
+   },
+   {
+    "date": "2009-09-12",
+    "rate": 0.0601
+   },
+   {
+    "date": "2009-09-15",
+    "rate": 0.0595
+   },
+   {
+    "date": "2009-09-18",
+    "rate": 0.0589
+   },
+   {
+    "date": "2009-09-21",
+    "rate": 0.0583
+   },
+   {
+    "date": "2009-09-24",
+    "rate": 0.0577
+   }
+  ],
+  "stats": {
+   "logistic_p": 0.0072,
+   "logistic_or_per_week": 0.9745,
+   "mann_kendall_p": 0.0131,
+   "mann_kendall_z": -2.481,
+   "good_rate_p": 0.8068,
+   "baseline_rate": 0.0811
+  }
+ },
+ "segments": {
+  "PartnerClean": {
+   "title": "Traffic source (Partner)",
+   "rows": [
+    {
+     "label": "Advertise.com",
+     "n": 3,
+     "closed": 1,
+     "rate": 0.3333,
+     "reliable": false
+    },
+    {
+     "label": "AdKnowledge",
+     "n": 171,
+     "closed": 21,
+     "rate": 0.1228,
+     "reliable": true
+    },
+    {
+     "label": "Google-Search",
+     "n": 979,
+     "closed": 97,
+     "rate": 0.0991,
+     "reliable": true
+    },
+    {
+     "label": "Call_Center",
+     "n": 271,
+     "closed": 26,
+     "rate": 0.0959,
+     "reliable": true
+    },
+    {
+     "label": "yahoo",
+     "n": 958,
+     "closed": 74,
+     "rate": 0.0772,
+     "reliable": true
+    },
+    {
+     "label": "Google-Display",
+     "n": 639,
+     "closed": 26,
+     "rate": 0.0407,
+     "reliable": true
+    }
+   ],
+   "chi2_p": 0.00011
+  },
+  "WidgetVariant": {
+   "title": "Widget / creative variant",
+   "rows": [
+    {
+     "label": "1DC-BlueMeter",
+     "n": 92,
+     "closed": 13,
+     "rate": 0.1413,
+     "reliable": true
+    },
+    {
+     "label": "1DC-Head2",
+     "n": 89,
+     "closed": 11,
+     "rate": 0.1236,
+     "reliable": true
+    },
+    {
+     "label": "1DC",
+     "n": 620,
+     "closed": 57,
+     "rate": 0.0919,
+     "reliable": true
+    },
+    {
+     "label": "2DC-CreditSolutions",
+     "n": 75,
+     "closed": 6,
+     "rate": 0.08,
+     "reliable": true
+    },
+    {
+     "label": "1DC-CreditSolutions",
+     "n": 1131,
+     "closed": 88,
+     "rate": 0.0778,
+     "reliable": true
+    },
+    {
+     "label": "1DC-yellowarrow-dark",
+     "n": 135,
+     "closed": 10,
+     "rate": 0.0741,
+     "reliable": true
+    },
+    {
+     "label": "1DC-white",
+     "n": 436,
+     "closed": 32,
+     "rate": 0.0734,
+     "reliable": true
+    },
+    {
+     "label": "2DC-BlueMeter",
+     "n": 87,
+     "closed": 6,
+     "rate": 0.069,
+     "reliable": true
+    },
+    {
+     "label": "1DC-yellowarrow-blue",
+     "n": 232,
+     "closed": 15,
+     "rate": 0.0647,
+     "reliable": true
+    },
+    {
+     "label": "1DC-yellowarrow",
+     "n": 49,
+     "closed": 3,
+     "rate": 0.0612,
+     "reliable": true
+    },
+    {
+     "label": "1DC-Head3",
+     "n": 75,
+     "closed": 4,
+     "rate": 0.0533,
+     "reliable": true
+    }
+   ],
+   "chi2_p": 0.41797
+  },
+  "PublisherZoneName": {
+   "title": "Publisher zone (placement)",
+   "rows": [
+    {
+     "label": "Top Right-300x250",
+     "n": 271,
+     "closed": 26,
+     "rate": 0.0959,
+     "reliable": true
+    },
+    {
+     "label": "TopLeft-302252",
+     "n": 2750,
+     "closed": 219,
+     "rate": 0.0796,
+     "reliable": true
+    }
+   ],
+   "chi2_p": 0.41138
+  },
+  "PublisherCampaignName": {
+   "title": "Publisher campaign (web vs call-center)",
+   "rows": [
+    {
+     "label": "DebtReductionCallCenter",
+     "n": 271,
+     "closed": 26,
+     "rate": 0.0959,
+     "reliable": true
+    },
+    {
+     "label": "DebtReductionInc",
+     "n": 2750,
+     "closed": 219,
+     "rate": 0.0796,
+     "reliable": true
+    }
+   ],
+   "chi2_p": 0.41138
+  },
+  "AdvertiserCampaignName": {
+   "title": "Advertiser campaign (branded vs generic)",
+   "rows": [
+    {
+     "label": "Debt Settlement1 Master",
+     "n": 1815,
+     "closed": 151,
+     "rate": 0.0832,
+     "reliable": true
+    },
+    {
+     "label": "creditsolutions-branded-shortform",
+     "n": 1206,
+     "closed": 94,
+     "rate": 0.0779,
+     "reliable": true
+    }
+   ],
+   "chi2_p": 0.65284
+  },
+  "DebtLevelClean": {
+   "title": "Debt level",
+   "rows": [
+    {
+     "label": "70001-90000",
+     "n": 131,
+     "closed": 18,
+     "rate": 0.1374,
+     "reliable": true
+    },
+    {
+     "label": "90000-100000",
+     "n": 90,
+     "closed": 9,
+     "rate": 0.1,
+     "reliable": true
+    },
+    {
+     "label": "50001-70000",
+     "n": 245,
+     "closed": 22,
+     "rate": 0.0898,
+     "reliable": true
+    },
+    {
+     "label": "20001-30000",
+     "n": 456,
+     "closed": 40,
+     "rate": 0.0877,
+     "reliable": true
+    },
+    {
+     "label": "15001-20000",
+     "n": 408,
+     "closed": 35,
+     "rate": 0.0858,
+     "reliable": true
+    },
+    {
+     "label": "30001-50000",
+     "n": 496,
+     "closed": 39,
+     "rate": 0.0786,
+     "reliable": true
+    },
+    {
+     "label": "7500-15000",
+     "n": 1004,
+     "closed": 75,
+     "rate": 0.0747,
+     "reliable": true
+    },
+    {
+     "label": "More than 100000",
+     "n": 191,
+     "closed": 7,
+     "rate": 0.0366,
+     "reliable": true
+    }
+   ],
+   "chi2_p": 0.09119
+  },
+  "State": {
+   "title": "State",
+   "rows": [
+    {
+     "label": "OK",
+     "n": 50,
+     "closed": 9,
+     "rate": 0.18,
+     "reliable": true
+    },
+    {
+     "label": "HI",
+     "n": 32,
+     "closed": 5,
+     "rate": 0.1562,
+     "reliable": true
+    },
+    {
+     "label": "CT",
+     "n": 23,
+     "closed": 3,
+     "rate": 0.1304,
+     "reliable": false
+    },
+    {
+     "label": "AL",
+     "n": 96,
+     "closed": 12,
+     "rate": 0.125,
+     "reliable": true
+    },
+    {
+     "label": "MT",
+     "n": 24,
+     "closed": 3,
+     "rate": 0.125,
+     "reliable": false
+    },
+    {
+     "label": "AK",
+     "n": 8,
+     "closed": 1,
+     "rate": 0.125,
+     "reliable": false
+    },
+    {
+     "label": "NM",
+     "n": 29,
+     "closed": 3,
+     "rate": 0.1034,
+     "reliable": false
+    },
+    {
+     "label": "WV",
+     "n": 52,
+     "closed": 5,
+     "rate": 0.0962,
+     "reliable": true
+    },
+    {
+     "label": "AZ",
+     "n": 94,
+     "closed": 9,
+     "rate": 0.0957,
+     "reliable": true
+    },
+    {
+     "label": "CA",
+     "n": 463,
+     "closed": 44,
+     "rate": 0.095,
+     "reliable": true
+    },
+    {
+     "label": "NV",
+     "n": 54,
+     "closed": 5,
+     "rate": 0.0926,
+     "reliable": true
+    },
+    {
+     "label": "NE",
+     "n": 22,
+     "closed": 2,
+     "rate": 0.0909,
+     "reliable": false
+    },
+    {
+     "label": "TX",
+     "n": 325,
+     "closed": 28,
+     "rate": 0.0862,
+     "reliable": true
+    },
+    {
+     "label": "VA",
+     "n": 145,
+     "closed": 12,
+     "rate": 0.0828,
+     "reliable": true
+    },
+    {
+     "label": "PA",
+     "n": 75,
+     "closed": 6,
+     "rate": 0.08,
+     "reliable": true
+    },
+    {
+     "label": "MI",
+     "n": 145,
+     "closed": 11,
+     "rate": 0.0759,
+     "reliable": true
+    },
+    {
+     "label": "IL",
+     "n": 186,
+     "closed": 14,
+     "rate": 0.0753,
+     "reliable": true
+    },
+    {
+     "label": "WA",
+     "n": 28,
+     "closed": 2,
+     "rate": 0.0714,
+     "reliable": false
+    },
+    {
+     "label": "FL",
+     "n": 261,
+     "closed": 18,
+     "rate": 0.069,
+     "reliable": true
+    },
+    {
+     "label": "MO",
+     "n": 90,
+     "closed": 6,
+     "rate": 0.0667,
+     "reliable": true
+    },
+    {
+     "label": "CO",
+     "n": 105,
+     "closed": 7,
+     "rate": 0.0667,
+     "reliable": true
+    },
+    {
+     "label": "AR",
+     "n": 48,
+     "closed": 3,
+     "rate": 0.0625,
+     "reliable": true
+    },
+    {
+     "label": "LA",
+     "n": 80,
+     "closed": 5,
+     "rate": 0.0625,
+     "reliable": true
+    },
+    {
+     "label": "MD",
+     "n": 98,
+     "closed": 6,
+     "rate": 0.0612,
+     "reliable": true
+    },
+    {
+     "label": "NY",
+     "n": 283,
+     "closed": 17,
+     "rate": 0.0601,
+     "reliable": true
+    },
+    {
+     "label": "MA",
+     "n": 70,
+     "closed": 4,
+     "rate": 0.0571,
+     "reliable": true
+    },
+    {
+     "label": "OR",
+     "n": 54,
+     "closed": 3,
+     "rate": 0.0556,
+     "reliable": true
+    },
+    {
+     "label": "IA",
+     "n": 19,
+     "closed": 1,
+     "rate": 0.0526,
+     "reliable": false
+    },
+    {
+     "label": "IN",
+     "n": 36,
+     "closed": 1,
+     "rate": 0.0278,
+     "reliable": true
+    },
+    {
+     "label": "DC",
+     "n": 6,
+     "closed": 0,
+     "rate": 0.0,
+     "reliable": false
+    },
+    {
+     "label": "ND",
+     "n": 9,
+     "closed": 0,
+     "rate": 0.0,
+     "reliable": false
+    },
+    {
+     "label": "SD",
+     "n": 11,
+     "closed": 0,
+     "rate": 0.0,
+     "reliable": false
+    }
+   ],
+   "chi2_p": 0.53823
+  },
+  "AddressScore": {
+   "title": "AddressScore (1-5, post-Jun subset)",
+   "rows": [
+    {
+     "label": "2.0",
+     "n": 38,
+     "closed": 4,
+     "rate": 0.1053,
+     "reliable": true
+    },
+    {
+     "label": "(none)",
+     "n": 1850,
+     "closed": 166,
+     "rate": 0.0897,
+     "reliable": true
+    },
+    {
+     "label": "5.0",
+     "n": 870,
+     "closed": 64,
+     "rate": 0.0736,
+     "reliable": true
+    },
+    {
+     "label": "3.0",
+     "n": 93,
+     "closed": 5,
+     "rate": 0.0538,
+     "reliable": true
+    },
+    {
+     "label": "1.0",
+     "n": 122,
+     "closed": 5,
+     "rate": 0.041,
+     "reliable": true
+    },
+    {
+     "label": "4.0",
+     "n": 48,
+     "closed": 1,
+     "rate": 0.0208,
+     "reliable": true
+    }
+   ],
+   "chi2_p": 0.32244
+  },
+  "PhoneScore": {
+   "title": "PhoneScore (1-5, post-Jun subset)",
+   "rows": [
+    {
+     "label": "(none)",
+     "n": 1628,
+     "closed": 149,
+     "rate": 0.0915,
+     "reliable": true
+    },
+    {
+     "label": "5.0",
+     "n": 619,
+     "closed": 54,
+     "rate": 0.0872,
+     "reliable": true
+    },
+    {
+     "label": "3.0",
+     "n": 427,
+     "closed": 28,
+     "rate": 0.0656,
+     "reliable": true
+    },
+    {
+     "label": "2.0",
+     "n": 162,
+     "closed": 7,
+     "rate": 0.0432,
+     "reliable": true
+    },
+    {
+     "label": "4.0",
+     "n": 184,
+     "closed": 7,
+     "rate": 0.038,
+     "reliable": true
+    },
+    {
+     "label": "1.0",
+     "n": 1,
+     "closed": 0,
+     "rate": 0.0,
+     "reliable": false
+    }
+   ],
+   "chi2_p": 0.05243
+  }
+ },
+ "q3": {
+  "baseline_rate": 0.0811,
+  "target_rate": 0.096,
+  "scenarios": [
+   {
+    "name": "1. Redirect Google-Display budget to Google-Search",
+    "rate": 0.0935,
+    "lift_pp": 1.24,
+    "pct_of_gap": 82.9,
+    "note": "Assumes the 639 leads currently sourced via Google Display/GDN (doubleclick.net referrals, 4.07% close rate) are instead sourced via Google Search at that channel's observed 9.91% close rate, same total volume."
+   },
+   {
+    "name": "2. Stop selling >$100k-debt leads (no replacement volume)",
+    "rate": 0.0841,
+    "lift_pp": 0.3,
+    "pct_of_gap": 20.1,
+    "note": "Excludes the 191 leads with debt >$100k (3.66% close rate vs 8.41% for the rest -- this segment was significant at p=0.043 in the multivariate model even after controlling for widget/partner/state). Reduces total sold volume by 6.3%; CPL revenue on those leads would be foregone."
+   },
+   {
+    "name": "2b. Stop selling >$100k-debt leads, backfill volume at blended rest-of-pool rate",
+    "rate": 0.0841,
+    "lift_pp": 0.3,
+    "pct_of_gap": 20.1,
+    "note": "Same exclusion as #2, but assumes the 191 lead slots are backfilled with additional volume at the 8.41% blended rate of all other debt tiers, holding total volume at 3021."
+   },
+   {
+    "name": "3. Combined: redirect Display to Search and backfill high-debt exclusion",
+    "rate": 0.0975,
+    "lift_pp": 1.64,
+    "pct_of_gap": 109.9,
+    "note": "Stacks levers #1 and #2b: Google-Display volume redirected to Search-equivalent quality, and >$100k-debt volume backfilled at the blended rate of all remaining traffic. Same total sold volume as today."
+   }
+  ]
+ }
+}
