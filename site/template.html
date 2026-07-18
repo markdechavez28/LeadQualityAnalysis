@@ -292,11 +292,7 @@
   }
   .welcome-overlay.show .welcome-card { transform: translateY(0) scale(1); opacity: 1; }
   .welcome-card .panel-close { top: 16px; right: 16px; }
-  .welcome-badge {
-    display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-    background: var(--accent-bg); color: var(--accent); border-radius: 999px; padding: 5px 11px; margin-bottom: 12px;
-  }
-  .welcome-card h2 { font-size: 1.25rem; margin: 0 0 12px; padding-right: 20px; letter-spacing: -0.01em; }
+  .welcome-card h2 { font-size: 1.25rem; margin: 12px 0; padding-right: 20px; letter-spacing: -0.01em; }
   .welcome-card p { font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.6; margin: 0 0 12px; }
   .welcome-card p.welcome-tip {
     font-size: 0.82rem; background: var(--accent-bg); color: var(--ink); padding: 10px 12px; border-radius: 10px;
@@ -654,7 +650,6 @@
 <div class="welcome-overlay" id="welcomeOverlay">
   <div class="welcome-card">
     <button class="panel-close" id="welcomeClose">&times;</button>
-    <div class="welcome-badge">Interactive companion</div>
     <h2>Welcome. This dashboard is my RZR Analytics Challenge submission.</h2>
     <p>I'm <b>Mark Jerome De Chavez</b>, and this page is the interactive companion to my full case-study report analyzing six months of lead quality data. Building it is part of why I'd like to work with RZR: I enjoy turning a messy dataset into a clear, defensible story, and wanted this submission to show both the analysis and how I'd communicate it.</p>
     <p class="welcome-tip">Tip: almost everything here is tappable. Tap a card, chart bar, dot, slice or table row to open a detail panel with the exact numbers behind it. Watch for a quick pulse in a moment, it marks what you can tap.</p>
