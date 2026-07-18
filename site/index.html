@@ -1,6 +1,6 @@
 <!doctype html>
-<!-- build: 2026-07-17 16:53 UTC -->
-<html lang="en">
+<!-- build: 2026-07-18 01:29 UTC -->
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -153,6 +153,7 @@
   .card-eyebrow { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 700; margin-bottom: 2px; }
   .card-row { display: flex; align-items: center; justify-content: space-between; }
 
+  .col-3 { grid-column: span 3; }
   .col-4 { grid-column: span 4; }
   .col-5 { grid-column: span 5; }
   .col-6 { grid-column: span 6; }
@@ -160,13 +161,24 @@
   .col-8 { grid-column: span 8; }
   .col-12 { grid-column: span 12; }
   @media (max-width: 900px) {
-    .col-4, .col-5, .col-6, .col-7, .col-8 { grid-column: span 12; }
+    .col-3, .col-4, .col-5, .col-6, .col-7, .col-8 { grid-column: span 12; }
   }
+
+  /* ---------- question sections ---------- */
+  .q-section { margin-bottom: 26px; }
+  .q-section:last-child { margin-bottom: 0; }
+  .q-section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .q-section-head .q-num {
+    font-size: 0.7rem; font-weight: 800; letter-spacing: 0.03em; background: var(--pill-active-bg);
+    color: var(--pill-active-ink); border-radius: 999px; padding: 4px 11px; flex: none;
+  }
+  .q-section-head .q-text { font-size: 0.92rem; font-weight: 700; color: var(--ink); }
 
   .headline-card { display: flex; flex-direction: column; gap: 14px; }
   .headline-visual {
     border-radius: 16px; padding: 22px; background: linear-gradient(135deg, var(--accent-amber), var(--accent) 55%, var(--accent-crimson));
     color: #fff; position: relative; overflow: hidden;
+    flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 130px;
   }
   .headline-visual .big-stat { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.02em; }
   .headline-visual .big-label { font-size: 0.8rem; opacity: 0.92; font-weight: 600; }
@@ -266,6 +278,50 @@
   .panel-body p.note { font-size: 0.8rem; background: var(--accent-bg); color: var(--ink); padding: 10px 12px; border-radius: 10px; }
   .panel-body p.warn { font-size: 0.8rem; background: var(--critical-bg); color: var(--ink); padding: 10px 12px; border-radius: 10px; }
 
+  /* ---------- welcome modal ---------- */
+  .welcome-overlay {
+    position: fixed; inset: 0; background: rgba(10,10,12,0.5); opacity: 0; pointer-events: none;
+    transition: opacity .25s ease; z-index: 60; display: flex; align-items: center; justify-content: center;
+    padding: 20px; backdrop-filter: blur(2px);
+  }
+  .welcome-overlay.show { opacity: 1; pointer-events: auto; }
+  .welcome-card {
+    position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 22px;
+    box-shadow: var(--shadow); max-width: 460px; width: 100%; padding: 30px 28px 26px;
+    transform: translateY(10px) scale(0.98); opacity: 0; transition: transform .25s ease, opacity .25s ease;
+  }
+  .welcome-overlay.show .welcome-card { transform: translateY(0) scale(1); opacity: 1; }
+  .welcome-card .panel-close { top: 16px; right: 16px; }
+  .welcome-badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    background: var(--accent-bg); color: var(--accent); border-radius: 999px; padding: 5px 11px; margin-bottom: 12px;
+  }
+  .welcome-card h2 { font-size: 1.25rem; margin: 0 0 12px; padding-right: 20px; letter-spacing: -0.01em; }
+  .welcome-card p { font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.6; margin: 0 0 12px; }
+  .welcome-card p.welcome-tip {
+    font-size: 0.82rem; background: var(--accent-bg); color: var(--ink); padding: 10px 12px; border-radius: 10px;
+  }
+  .welcome-card .welcome-signature { font-size: 0.82rem; color: var(--ink); margin: 0 0 16px; }
+  .welcome-card .welcome-signature b { font-weight: 700; }
+  .welcome-card .btn-dark { border: none; width: 100%; justify-content: center; padding: 11px 16px; font-size: 0.85rem; }
+
+  /* ---------- tap-to-explore hint ---------- */
+  @keyframes tapHintPop {
+    0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 0 transparent); }
+    50% { transform: translateY(-3px) scale(1.025); filter: drop-shadow(0 3px 8px rgba(255,90,46,0.45)); }
+  }
+  @keyframes tapHintFlash {
+    0%, 100% { background: transparent; }
+    50% { background: var(--accent-bg); }
+  }
+  @keyframes tapHintGlow {
+    0%, 100% { filter: drop-shadow(0 0 0 transparent); opacity: 1; }
+    50% { filter: drop-shadow(0 0 6px rgba(255,90,46,0.65)); opacity: 0.82; }
+  }
+  .tap-hint { animation: tapHintPop 0.5s ease-in-out 4; transform-box: fill-box; transform-origin: center; }
+  .tap-hint-flash { animation: tapHintFlash 0.5s ease-in-out 4; }
+  .tap-hint-glow { animation: tapHintGlow 0.5s ease-in-out 4; }
+
   @media (max-width: 760px) {
     .app { padding: 10px; }
     .shell { flex-direction: column; border-radius: 20px; }
@@ -348,12 +404,12 @@
 
       <!-- ============ OVERVIEW ============ -->
       <div class="view active" id="view-overview">
-        <div class="grid">
 
-          <div class="col-4" style="display:flex; flex-direction:column; gap:16px;">
-            <div class="card clickable headline-card" id="cardHeadline">
+        <div class="q-section">
+          <div class="q-section-head"><span class="q-num">Q1</span><span class="q-text">Is lead quality trending over time?</span></div>
+          <div class="grid">
+            <div class="card clickable headline-card col-5 tap-target" id="cardHeadline">
               <div>
-                <div class="card-eyebrow">Question 1</div>
                 <h2>Lead quality is declining</h2>
                 <p class="desc">Closed rate fell across Apr to Sep 2009. Tap for the significance tests.</p>
               </div>
@@ -365,9 +421,67 @@
               </div>
             </div>
 
-            <div class="card clickable" id="cardLever">
+            <div class="col-4" style="display:flex; flex-direction:column; gap:16px;">
+              <div class="card">
+                <div class="card-row">
+                  <div>
+                    <div class="card-eyebrow">Volume</div>
+                    <h2 id="ovTotalLeads">3,021 leads</h2>
+                  </div>
+                </div>
+                <p class="desc">Weekly volume, most recent 8 weeks. Tap a bar for that week.</p>
+                <div id="activityChart"></div>
+              </div>
+
+              <div class="card" style="flex:1;">
+                <div class="card-eyebrow">Significance</div>
+                <h2>Closed rate trend</h2>
+                <p class="desc">Weekly rate with the fitted trend line.</p>
+                <div id="closedRateLineChart"></div>
+              </div>
+            </div>
+
+            <div class="card col-3">
+              <div class="card-eyebrow">Methodology</div>
+              <h2>Quality breakdown</h2>
+              <p class="desc">Tap a row for the exact definition.</p>
+              <div id="qualityRows"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="q-section">
+          <div class="q-section-head"><span class="q-num">Q2</span><span class="q-text">Which segments drive lead quality?</span></div>
+          <div class="grid">
+            <div class="col-6">
+              <div class="card">
+                <div class="card-eyebrow">Traffic source</div>
+                <h2>Traffic source mix</h2>
+                <p class="desc">Share of leads by source. Tap a slice or legend row for its Closed rate.</p>
+                <div id="donutWrap" style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+                  <div id="donutChart"></div>
+                  <div id="donutLegend" style="flex:1; min-width:180px;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="card">
+                <div class="card-eyebrow">Strongest driver</div>
+                <h2>Google-Display underperforms every other channel</h2>
+                <p class="desc">4.1% Closed rate versus 9.9% for Google-Search, on 639 leads. Significant at p &lt; 0.001 even after controlling for widget, state and debt level.</p>
+                <button class="learn-more-btn" id="openSegmentsBtn">Open the segment explorer &rarr;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="q-section">
+          <div class="q-section-head"><span class="q-num">Q3</span><span class="q-text">How do we close the gap to target?</span></div>
+          <div class="grid">
+            <div class="card clickable col-7 tap-target" id="cardLever">
               <div class="card-row">
-                <div class="card-eyebrow">Question 3</div>
+                <div class="card-eyebrow">Path to target</div>
                 <span class="badge-pill good" id="ovGapBadge">+1.64pp</span>
               </div>
               <h2>Path to 9.6%</h2>
@@ -375,36 +489,8 @@
               <div id="miniWaterfall"></div>
               <button class="learn-more-btn">See the levers &rarr;</button>
             </div>
-          </div>
 
-          <div class="col-4" style="display:flex; flex-direction:column; gap:16px;">
-            <div class="card">
-              <div class="card-row">
-                <div>
-                  <div class="card-eyebrow">Volume</div>
-                  <h2 id="ovTotalLeads">3,021 leads</h2>
-                </div>
-              </div>
-              <p class="desc">Weekly volume, most recent 8 weeks. Tap a bar for that week.</p>
-              <div id="activityChart"></div>
-            </div>
-
-            <div class="card" style="flex:1;">
-              <div class="card-eyebrow">Q1 significance</div>
-              <h2>Closed rate trend</h2>
-              <p class="desc">Weekly rate with the fitted trend line.</p>
-              <div id="closedRateLineChart"></div>
-            </div>
-          </div>
-
-          <div class="col-4" style="display:flex; flex-direction:column; gap:16px;">
-            <div class="card">
-              <div class="card-eyebrow">Methodology</div>
-              <h2>Quality breakdown</h2>
-              <p class="desc">Tap a row for the exact definition.</p>
-              <div id="qualityRows"></div>
-            </div>
-            <div class="accent-panel" style="flex:1;">
+            <div class="accent-panel col-5">
               <div>
                 <div class="tag">Target progress</div>
                 <div class="big" id="targetBig">9.75%</div>
@@ -416,29 +502,8 @@
               </div>
             </div>
           </div>
-
-          <div class="col-6">
-            <div class="card">
-              <div class="card-eyebrow">Question 2</div>
-              <h2>Traffic source mix</h2>
-              <p class="desc">Share of leads by source. Tap a slice or legend row for its Closed rate.</p>
-              <div id="donutWrap" style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
-                <div id="donutChart"></div>
-                <div id="donutLegend" style="flex:1; min-width:180px;"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="card">
-              <div class="card-eyebrow">Question 2, strongest driver</div>
-              <h2>Google-Display underperforms every other channel</h2>
-              <p class="desc">4.1% Closed rate versus 9.9% for Google-Search, on 639 leads. Significant at p &lt; 0.001 even after controlling for widget, state and debt level.</p>
-              <button class="learn-more-btn" id="openSegmentsBtn">Open the segment explorer &rarr;</button>
-            </div>
-          </div>
-
         </div>
+
       </div>
 
       <!-- ============ TREND ============ -->
@@ -459,17 +524,17 @@
             </div>
           </div>
           <div class="col-4" style="display:flex; flex-direction:column; gap:16px;">
-            <div class="card clickable" data-panel="stat-logistic">
+            <div class="card clickable tap-target" data-panel="stat-logistic">
               <div class="card-eyebrow">Logistic regression</div>
               <div class="stat-num" style="color:var(--good)">p = 0.0072</div>
               <div class="stat-sub">Closed as a function of week number</div>
             </div>
-            <div class="card clickable" data-panel="stat-mk">
+            <div class="card clickable tap-target" data-panel="stat-mk">
               <div class="card-eyebrow">Mann-Kendall test</div>
               <div class="stat-num" style="color:var(--good)">p = 0.0131</div>
               <div class="stat-sub">Non-parametric check on the weekly series</div>
             </div>
-            <div class="card clickable" data-panel="stat-good">
+            <div class="card clickable tap-target" data-panel="stat-good">
               <div class="card-eyebrow">Secondary check</div>
               <div class="stat-num" style="color:var(--ink-muted)">p = 0.807</div>
               <div class="stat-sub">Good rate trend, not significant</div>
@@ -586,6 +651,17 @@
   <div class="panel-body" id="panelBody"></div>
 </aside>
 
+<div class="welcome-overlay" id="welcomeOverlay">
+  <div class="welcome-card">
+    <button class="panel-close" id="welcomeClose">&times;</button>
+    <div class="welcome-badge">Interactive companion</div>
+    <h2>Welcome. This dashboard is my RZR Analytics Challenge submission.</h2>
+    <p>I'm <b>Mark Jerome De Chavez</b>, and this page is the interactive companion to my full case-study report analyzing six months of lead quality data. Building it is part of why I'd like to work with RZR: I enjoy turning a messy dataset into a clear, defensible story, and wanted this submission to show both the analysis and how I'd communicate it.</p>
+    <p class="welcome-tip">Tip: almost everything here is tappable. Tap a card, chart bar, dot, slice or table row to open a detail panel with the exact numbers behind it. Watch for a quick pulse in a moment, it marks what you can tap.</p>
+    <button class="btn-dark" id="welcomeGotIt">Got it, let's explore &rarr;</button>
+  </div>
+</div>
+
 <script id="site-data" type="application/json">
 {"meta": {"n_total": 3021, "date_min": "2009-04-02", "date_max": "2009-09-30"}, "quality_breakdown": {"closed": 245, "good": 393, "bad": 488, "unknown": 2140, "total": 3021}, "trend": {"weekly": [{"week": "2009-03-30", "n": 37, "closed": 3, "rate": 0.0811}, {"week": "2009-04-06", "n": 119, "closed": 15, "rate": 0.1261}, {"week": "2009-04-13", "n": 125, "closed": 16, "rate": 0.128}, {"week": "2009-04-20", "n": 155, "closed": 14, "rate": 0.0903}, {"week": "2009-04-27", "n": 129, "closed": 10, "rate": 0.0775}, {"week": "2009-05-04", "n": 113, "closed": 10, "rate": 0.0885}, {"week": "2009-05-11", "n": 166, "closed": 12, "rate": 0.0723}, {"week": "2009-05-18", "n": 122, "closed": 8, "rate": 0.0656}, {"week": "2009-05-25", "n": 132, "closed": 5, "rate": 0.0379}, {"week": "2009-06-01", "n": 137, "closed": 10, "rate": 0.073}, {"week": "2009-06-08", "n": 165, "closed": 17, "rate": 0.103}, {"week": "2009-06-15", "n": 153, "closed": 21, "rate": 0.1373}, {"week": "2009-06-22", "n": 107, "closed": 9, "rate": 0.0841}, {"week": "2009-06-29", "n": 101, "closed": 9, "rate": 0.0891}, {"week": "2009-07-06", "n": 104, "closed": 8, "rate": 0.0769}, {"week": "2009-07-13", "n": 115, "closed": 6, "rate": 0.0522}, {"week": "2009-07-20", "n": 144, "closed": 11, "rate": 0.0764}, {"week": "2009-07-27", "n": 136, "closed": 9, "rate": 0.0662}, {"week": "2009-08-03", "n": 95, "closed": 11, "rate": 0.1158}, {"week": "2009-08-10", "n": 116, "closed": 14, "rate": 0.1207}, {"week": "2009-08-17", "n": 104, "closed": 4, "rate": 0.0385}, {"week": "2009-08-24", "n": 89, "closed": 7, "rate": 0.0787}, {"week": "2009-08-31", "n": 74, "closed": 3, "rate": 0.0405}, {"week": "2009-09-07", "n": 65, "closed": 5, "rate": 0.0769}, {"week": "2009-09-14", "n": 95, "closed": 4, "rate": 0.0421}, {"week": "2009-09-21", "n": 82, "closed": 4, "rate": 0.0488}, {"week": "2009-09-28", "n": 41, "closed": 0, "rate": 0.0}], "monthly": [{"month": "2009-04", "n": 518, "closed": 56, "rate": 0.1081}, {"month": "2009-05", "n": 580, "closed": 37, "rate": 0.0638}, {"month": "2009-06", "n": 609, "closed": 63, "rate": 0.1034}, {"month": "2009-07", "n": 532, "closed": 33, "rate": 0.062}, {"month": "2009-08", "n": 438, "closed": 41, "rate": 0.0936}, {"month": "2009-09", "n": 344, "closed": 15, "rate": 0.0436}], "trend_line": [{"date": "2009-04-02", "rate": 0.1045}, {"date": "2009-04-05", "rate": 0.1035}, {"date": "2009-04-08", "rate": 0.1025}, {"date": "2009-04-11", "rate": 0.1015}, {"date": "2009-04-14", "rate": 0.1005}, {"date": "2009-04-17", "rate": 0.0995}, {"date": "2009-04-20", "rate": 0.0985}, {"date": "2009-04-23", "rate": 0.0976}, {"date": "2009-04-26", "rate": 0.0966}, {"date": "2009-04-29", "rate": 0.0957}, {"date": "2009-05-02", "rate": 0.0947}, {"date": "2009-05-05", "rate": 0.0938}, {"date": "2009-05-08", "rate": 0.0929}, {"date": "2009-05-11", "rate": 0.092}, {"date": "2009-05-14", "rate": 0.091}, {"date": "2009-05-17", "rate": 0.0901}, {"date": "2009-05-20", "rate": 0.0892}, {"date": "2009-05-23", "rate": 0.0884}, {"date": "2009-05-26", "rate": 0.0875}, {"date": "2009-05-29", "rate": 0.0866}, {"date": "2009-06-01", "rate": 0.0858}, {"date": "2009-06-04", "rate": 0.0849}, {"date": "2009-06-07", "rate": 0.0841}, {"date": "2009-06-10", "rate": 0.0832}, {"date": "2009-06-12", "rate": 0.0824}, {"date": "2009-06-15", "rate": 0.0816}, {"date": "2009-06-18", "rate": 0.0808}, {"date": "2009-06-21", "rate": 0.0799}, {"date": "2009-06-24", "rate": 0.0791}, {"date": "2009-06-27", "rate": 0.0784}, {"date": "2009-06-30", "rate": 0.0776}, {"date": "2009-07-03", "rate": 0.0768}, {"date": "2009-07-06", "rate": 0.076}, {"date": "2009-07-09", "rate": 0.0753}, {"date": "2009-07-12", "rate": 0.0745}, {"date": "2009-07-15", "rate": 0.0737}, {"date": "2009-07-18", "rate": 0.073}, {"date": "2009-07-21", "rate": 0.0723}, {"date": "2009-07-24", "rate": 0.0715}, {"date": "2009-07-27", "rate": 0.0708}, {"date": "2009-07-30", "rate": 0.0701}, {"date": "2009-08-02", "rate": 0.0694}, {"date": "2009-08-05", "rate": 0.0687}, {"date": "2009-08-08", "rate": 0.068}, {"date": "2009-08-11", "rate": 0.0673}, {"date": "2009-08-14", "rate": 0.0666}, {"date": "2009-08-17", "rate": 0.0659}, {"date": "2009-08-20", "rate": 0.0653}, {"date": "2009-08-23", "rate": 0.0646}, {"date": "2009-08-26", "rate": 0.064}, {"date": "2009-08-29", "rate": 0.0633}, {"date": "2009-09-01", "rate": 0.0627}, {"date": "2009-09-04", "rate": 0.062}, {"date": "2009-09-06", "rate": 0.0614}, {"date": "2009-09-09", "rate": 0.0608}, {"date": "2009-09-12", "rate": 0.0601}, {"date": "2009-09-15", "rate": 0.0595}, {"date": "2009-09-18", "rate": 0.0589}, {"date": "2009-09-21", "rate": 0.0583}, {"date": "2009-09-24", "rate": 0.0577}], "stats": {"logistic_p": 0.0072, "logistic_or_per_week": 0.9745, "mann_kendall_p": 0.0131, "mann_kendall_z": -2.481, "good_rate_p": 0.8068, "baseline_rate": 0.0811}}, "segments": {"PartnerClean": {"title": "Traffic source (Partner)", "rows": [{"label": "Advertise.com", "n": 3, "closed": 1, "rate": 0.3333, "reliable": false}, {"label": "AdKnowledge", "n": 171, "closed": 21, "rate": 0.1228, "reliable": true}, {"label": "Google-Search", "n": 979, "closed": 97, "rate": 0.0991, "reliable": true}, {"label": "Call_Center", "n": 271, "closed": 26, "rate": 0.0959, "reliable": true}, {"label": "yahoo", "n": 958, "closed": 74, "rate": 0.0772, "reliable": true}, {"label": "Google-Display", "n": 639, "closed": 26, "rate": 0.0407, "reliable": true}], "chi2_p": 0.00011}, "WidgetVariant": {"title": "Widget / creative variant", "rows": [{"label": "1DC-BlueMeter", "n": 92, "closed": 13, "rate": 0.1413, "reliable": true}, {"label": "1DC-Head2", "n": 89, "closed": 11, "rate": 0.1236, "reliable": true}, {"label": "1DC", "n": 620, "closed": 57, "rate": 0.0919, "reliable": true}, {"label": "2DC-CreditSolutions", "n": 75, "closed": 6, "rate": 0.08, "reliable": true}, {"label": "1DC-CreditSolutions", "n": 1131, "closed": 88, "rate": 0.0778, "reliable": true}, {"label": "1DC-yellowarrow-dark", "n": 135, "closed": 10, "rate": 0.0741, "reliable": true}, {"label": "1DC-white", "n": 436, "closed": 32, "rate": 0.0734, "reliable": true}, {"label": "2DC-BlueMeter", "n": 87, "closed": 6, "rate": 0.069, "reliable": true}, {"label": "1DC-yellowarrow-blue", "n": 232, "closed": 15, "rate": 0.0647, "reliable": true}, {"label": "1DC-yellowarrow", "n": 49, "closed": 3, "rate": 0.0612, "reliable": true}, {"label": "1DC-Head3", "n": 75, "closed": 4, "rate": 0.0533, "reliable": true}], "chi2_p": 0.41797}, "PublisherZoneName": {"title": "Publisher zone (placement)", "rows": [{"label": "Top Right-300x250", "n": 271, "closed": 26, "rate": 0.0959, "reliable": true}, {"label": "TopLeft-302252", "n": 2750, "closed": 219, "rate": 0.0796, "reliable": true}], "chi2_p": 0.41138}, "PublisherCampaignName": {"title": "Publisher campaign (web vs call-center)", "rows": [{"label": "DebtReductionCallCenter", "n": 271, "closed": 26, "rate": 0.0959, "reliable": true}, {"label": "DebtReductionInc", "n": 2750, "closed": 219, "rate": 0.0796, "reliable": true}], "chi2_p": 0.41138}, "AdvertiserCampaignName": {"title": "Advertiser campaign (branded vs generic)", "rows": [{"label": "Debt Settlement1 Master", "n": 1815, "closed": 151, "rate": 0.0832, "reliable": true}, {"label": "creditsolutions-branded-shortform", "n": 1206, "closed": 94, "rate": 0.0779, "reliable": true}], "chi2_p": 0.65284}, "DebtLevelClean": {"title": "Debt level", "rows": [{"label": "70001-90000", "n": 131, "closed": 18, "rate": 0.1374, "reliable": true}, {"label": "90000-100000", "n": 90, "closed": 9, "rate": 0.1, "reliable": true}, {"label": "50001-70000", "n": 245, "closed": 22, "rate": 0.0898, "reliable": true}, {"label": "20001-30000", "n": 456, "closed": 40, "rate": 0.0877, "reliable": true}, {"label": "15001-20000", "n": 408, "closed": 35, "rate": 0.0858, "reliable": true}, {"label": "30001-50000", "n": 496, "closed": 39, "rate": 0.0786, "reliable": true}, {"label": "7500-15000", "n": 1004, "closed": 75, "rate": 0.0747, "reliable": true}, {"label": "More than 100000", "n": 191, "closed": 7, "rate": 0.0366, "reliable": true}], "chi2_p": 0.09119}, "State": {"title": "State", "rows": [{"label": "OK", "n": 50, "closed": 9, "rate": 0.18, "reliable": true}, {"label": "HI", "n": 32, "closed": 5, "rate": 0.1562, "reliable": true}, {"label": "CT", "n": 23, "closed": 3, "rate": 0.1304, "reliable": false}, {"label": "AL", "n": 96, "closed": 12, "rate": 0.125, "reliable": true}, {"label": "MT", "n": 24, "closed": 3, "rate": 0.125, "reliable": false}, {"label": "AK", "n": 8, "closed": 1, "rate": 0.125, "reliable": false}, {"label": "NM", "n": 29, "closed": 3, "rate": 0.1034, "reliable": false}, {"label": "WV", "n": 52, "closed": 5, "rate": 0.0962, "reliable": true}, {"label": "AZ", "n": 94, "closed": 9, "rate": 0.0957, "reliable": true}, {"label": "CA", "n": 463, "closed": 44, "rate": 0.095, "reliable": true}, {"label": "NV", "n": 54, "closed": 5, "rate": 0.0926, "reliable": true}, {"label": "NE", "n": 22, "closed": 2, "rate": 0.0909, "reliable": false}, {"label": "TX", "n": 325, "closed": 28, "rate": 0.0862, "reliable": true}, {"label": "VA", "n": 145, "closed": 12, "rate": 0.0828, "reliable": true}, {"label": "PA", "n": 75, "closed": 6, "rate": 0.08, "reliable": true}, {"label": "MI", "n": 145, "closed": 11, "rate": 0.0759, "reliable": true}, {"label": "IL", "n": 186, "closed": 14, "rate": 0.0753, "reliable": true}, {"label": "WA", "n": 28, "closed": 2, "rate": 0.0714, "reliable": false}, {"label": "FL", "n": 261, "closed": 18, "rate": 0.069, "reliable": true}, {"label": "MO", "n": 90, "closed": 6, "rate": 0.0667, "reliable": true}, {"label": "CO", "n": 105, "closed": 7, "rate": 0.0667, "reliable": true}, {"label": "AR", "n": 48, "closed": 3, "rate": 0.0625, "reliable": true}, {"label": "LA", "n": 80, "closed": 5, "rate": 0.0625, "reliable": true}, {"label": "MD", "n": 98, "closed": 6, "rate": 0.0612, "reliable": true}, {"label": "NY", "n": 283, "closed": 17, "rate": 0.0601, "reliable": true}, {"label": "MA", "n": 70, "closed": 4, "rate": 0.0571, "reliable": true}, {"label": "OR", "n": 54, "closed": 3, "rate": 0.0556, "reliable": true}, {"label": "IA", "n": 19, "closed": 1, "rate": 0.0526, "reliable": false}, {"label": "IN", "n": 36, "closed": 1, "rate": 0.0278, "reliable": true}, {"label": "DC", "n": 6, "closed": 0, "rate": 0.0, "reliable": false}, {"label": "ND", "n": 9, "closed": 0, "rate": 0.0, "reliable": false}, {"label": "SD", "n": 11, "closed": 0, "rate": 0.0, "reliable": false}], "chi2_p": 0.53823}, "AddressScore": {"title": "AddressScore (1-5, post-Jun subset)", "rows": [{"label": "2.0", "n": 38, "closed": 4, "rate": 0.1053, "reliable": true}, {"label": "(none)", "n": 1850, "closed": 166, "rate": 0.0897, "reliable": true}, {"label": "5.0", "n": 870, "closed": 64, "rate": 0.0736, "reliable": true}, {"label": "3.0", "n": 93, "closed": 5, "rate": 0.0538, "reliable": true}, {"label": "1.0", "n": 122, "closed": 5, "rate": 0.041, "reliable": true}, {"label": "4.0", "n": 48, "closed": 1, "rate": 0.0208, "reliable": true}], "chi2_p": 0.32244}, "PhoneScore": {"title": "PhoneScore (1-5, post-Jun subset)", "rows": [{"label": "(none)", "n": 1628, "closed": 149, "rate": 0.0915, "reliable": true}, {"label": "5.0", "n": 619, "closed": 54, "rate": 0.0872, "reliable": true}, {"label": "3.0", "n": 427, "closed": 28, "rate": 0.0656, "reliable": true}, {"label": "2.0", "n": 162, "closed": 7, "rate": 0.0432, "reliable": true}, {"label": "4.0", "n": 184, "closed": 7, "rate": 0.038, "reliable": true}, {"label": "1.0", "n": 1, "closed": 0, "rate": 0.0, "reliable": false}], "chi2_p": 0.05243}}, "q3": {"baseline_rate": 0.0811, "target_rate": 0.096, "scenarios": [{"name": "1. Redirect Google-Display budget to Google-Search", "rate": 0.0935, "lift_pp": 1.24, "pct_of_gap": 82.9, "note": "Assumes the 639 leads currently sourced via Google Display/GDN (doubleclick.net referrals, 4.07% close rate) are instead sourced via Google Search at that channel's observed 9.91% close rate, same total volume."}, {"name": "2. Stop selling >$100k-debt leads (no replacement volume)", "rate": 0.0841, "lift_pp": 0.3, "pct_of_gap": 20.1, "note": "Excludes the 191 leads with debt >$100k (3.66% close rate vs 8.41% for the rest -- this segment was significant at p=0.043 in the multivariate model even after controlling for widget/partner/state). Reduces total sold volume by 6.3%; CPL revenue on those leads would be foregone."}, {"name": "2b. Stop selling >$100k-debt leads, backfill volume at blended rest-of-pool rate", "rate": 0.0841, "lift_pp": 0.3, "pct_of_gap": 20.1, "note": "Same exclusion as #2, but assumes the 191 lead slots are backfilled with additional volume at the 8.41% blended rate of all other debt tiers, holding total volume at 3021."}, {"name": "3. Combined: redirect Display to Search and backfill high-debt exclusion", "rate": 0.0975, "lift_pp": 1.64, "pct_of_gap": 109.9, "note": "Stacks levers #1 and #2b: Google-Display volume redirected to Search-equivalent quality, and >$100k-debt volume backfilled at the blended rate of all remaining traffic. Same total sold volume as today."}]}}
 </script>
@@ -664,6 +740,41 @@ document.getElementById('panelClose').addEventListener('click', closePanel);
 panelOverlay.addEventListener('click', closePanel);
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
 
+/* ============================== welcome modal ============================== */
+const welcomeOverlay = document.getElementById('welcomeOverlay');
+
+function triggerTapHints() {
+  document.querySelectorAll('.tap-target').forEach(el => {
+    el.classList.remove('tap-hint');
+    void el.offsetWidth;
+    el.classList.add('tap-hint');
+  });
+  document.querySelectorAll('.tap-target-row').forEach(el => {
+    el.classList.remove('tap-hint-flash');
+    void el.offsetWidth;
+    el.classList.add('tap-hint-flash');
+  });
+  document.querySelectorAll('.tap-target-glow').forEach(el => {
+    el.classList.remove('tap-hint-glow');
+    void el.getBBox && el.getBBox();
+    el.classList.add('tap-hint-glow');
+  });
+  setTimeout(() => {
+    document.querySelectorAll('.tap-hint, .tap-hint-flash, .tap-hint-glow').forEach(el => el.classList.remove('tap-hint', 'tap-hint-flash', 'tap-hint-glow'));
+  }, 2100);
+}
+
+function closeWelcome() {
+  if (!welcomeOverlay.classList.contains('show')) return;
+  welcomeOverlay.classList.remove('show');
+  triggerTapHints();
+}
+setTimeout(() => welcomeOverlay.classList.add('show'), 1500);
+document.getElementById('welcomeClose').addEventListener('click', closeWelcome);
+document.getElementById('welcomeGotIt').addEventListener('click', closeWelcome);
+welcomeOverlay.addEventListener('click', (e) => { if (e.target === welcomeOverlay) closeWelcome(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeWelcome(); });
+
 /* ---- static panels ---- */
 document.getElementById('methodologyBtn').addEventListener('click', () => {
   openPanel({
@@ -695,19 +806,21 @@ function statPanels(key) {
     'stat-logistic': {
       eyebrow: 'Q1, significance test 1', title: 'Logistic regression',
       stats: [{ l: 'p-value', v: '0.0072' }, { l: 'Odds ratio', v: '0.974 / week' }],
-      body: `<p>A logistic regression models whether each individual lead closed as a function of the week it was created. The odds of closing fall by about 2.6% per week, and the relationship is significant at p = 0.0072, comfortably under the usual 0.05 threshold.</p>
+      body: `<p class="note">In plain terms: leads created later in the six-month window were consistently less likely to close than leads created earlier. That's not random noise, it's a real pattern.</p>
+      <p>A logistic regression models whether each individual lead closed as a function of the week it was created. The odds of closing fall by about 2.6% per week, and the relationship is significant at p = 0.0072, comfortably under the usual 0.05 threshold (the standard bar for "this probably isn't just chance").</p>
       <p>Over the full 26 week span, that compounds to roughly half the odds of closing by late September compared with early April.</p>`,
     },
     'stat-mk': {
       eyebrow: 'Q1, significance test 2', title: 'Mann-Kendall trend test',
       stats: [{ l: 'p-value', v: '0.0131' }, { l: 'z-score', v: '-2.48' }],
-      body: `<p>Mann-Kendall is a non-parametric test that checks whether a series is generally rising or falling without assuming a specific shape. Run on the weekly Closed rate series, it confirms a significant decreasing trend, agreeing with the logistic regression.</p>`,
+      body: `<p class="note">In plain terms: this is a second, differently-built test on the same question, is the trend really going down. It agrees with the first one, which makes the decline more trustworthy.</p>
+      <p>Mann-Kendall is a non-parametric test, meaning it checks whether a series is generally rising or falling without assuming the data follows any particular curve or distribution. Run on the weekly Closed rate series, it confirms a significant decreasing trend, agreeing with the logistic regression above.</p>`,
     },
     'stat-good': {
       eyebrow: 'Q1, secondary check', title: 'Good rate trend',
       stats: [{ l: 'p-value', v: '0.807' }, { l: 'Result', v: 'Not significant' }],
-      body: `<p>The same trend test, run on the broader Good rate (Closed plus EP-stage progress) instead of Closed alone, shows no significant trend.</p>
-      <p class="note">This is a useful clue. Leads seem to advance through the pipeline at a stable rate over time, but convert to a final close less often as the year goes on. That points at downstream sales execution rather than declining lead quality at the point of sale.</p>`,
+      body: `<p>The same trend test, run on the broader Good rate (Closed plus EP-stage progress) instead of Closed alone, shows no significant trend, p = 0.807 is nowhere near the 0.05 bar.</p>
+      <p class="note">In plain terms: leads are still moving through the pipeline at a steady pace over time, they just convert into a final close less often as the months go on. That points at something happening downstream in sales execution, rather than the leads themselves getting worse.</p>`,
     },
   };
   return map[key];
@@ -778,7 +891,7 @@ function renderQualityRows() {
   el.innerHTML = '';
   rows.forEach(r => {
     const row = document.createElement('div');
-    row.className = 'kv-row';
+    row.className = 'kv-row tap-target';
     row.innerHTML = `<span class="kv-label">${r.label}</span>
       <span class="kv-bar-wrap"><span class="kv-bar" style="width:${(r.n / max * 100).toFixed(1)}%; background:${r.color};"></span></span>
       <span class="kv-val">${pct(r.n / max, 1)}</span>`;
@@ -820,7 +933,7 @@ function renderActivity() {
     const x = 8 + i * ((W - 16) / weeks.length);
     const h = ((w.n / max) * (H - margin.top - margin.bottom));
     const y = H - margin.bottom - h;
-    const rect = svgEl('rect', { x, y, width: bw, height: h, rx: 4, fill: cssVar('--accent'), 'fill-opacity': 0.85, style: 'cursor:pointer' });
+    const rect = svgEl('rect', { x, y, width: bw, height: h, rx: 4, fill: cssVar('--accent'), 'fill-opacity': 0.85, class: 'tap-target', style: 'cursor:pointer' });
     rect.addEventListener('click', () => {
       openPanel({
         eyebrow: 'Weekly volume', title: 'Week of ' + w.week,
@@ -855,7 +968,7 @@ function renderClosedRateLine() {
   svg.appendChild(svgEl('path', { d: path, fill: 'none', stroke: cssVar('--accent'), 'stroke-width': 2 }));
 
   weeks.forEach((w, i) => {
-    const c = svgEl('circle', { cx: xScale(i), cy: yScale(w.rate), r: 3.5, fill: cssVar('--card'), stroke: cssVar('--accent'), 'stroke-width': 2, style: 'cursor:pointer' });
+    const c = svgEl('circle', { cx: xScale(i), cy: yScale(w.rate), r: 3.5, fill: cssVar('--card'), stroke: cssVar('--accent'), 'stroke-width': 2, class: 'tap-target', style: 'cursor:pointer' });
     c.addEventListener('click', () => {
       openPanel({
         eyebrow: 'Weekly Closed rate', title: 'Week of ' + w.week,
@@ -894,7 +1007,7 @@ function renderDonut() {
     const circle = svgEl('circle', {
       cx, cy, r, fill: 'none', stroke: DONUT_COLORS[i % DONUT_COLORS.length], 'stroke-width': sw,
       'stroke-dasharray': `${Math.max(dash - 2, 0)} ${circumference - dash + 2}`,
-      'stroke-dashoffset': -offset, transform: `rotate(-90 ${cx} ${cy})`, style: 'cursor:pointer',
+      'stroke-dashoffset': -offset, transform: `rotate(-90 ${cx} ${cy})`, class: 'tap-target-glow', style: 'cursor:pointer',
     });
     circle.addEventListener('click', () => segmentRowPanel('Traffic source', 'PartnerClean', row));
     svg.appendChild(circle);
@@ -911,7 +1024,7 @@ function renderDonut() {
   legendEl.innerHTML = '';
   rows.forEach((row, i) => {
     const div = document.createElement('div');
-    div.className = 'legend-row';
+    div.className = 'legend-row tap-target';
     div.innerHTML = `<span class="legend-dot" style="background:${DONUT_COLORS[i % DONUT_COLORS.length]};"></span>
       <span class="legend-label">${row.label}</span>
       <span class="legend-val">${pct(row.rate)}</span>`;
@@ -989,7 +1102,7 @@ function renderTrend() {
     const r = 4 + (p.n / maxN) * 8;
     const c = svgEl('circle', {
       cx: xScale(p.x), cy: yScale(p.rate), r: r, fill: cssVar('--accent'), 'fill-opacity': 0.6,
-      stroke: cssVar('--card'), 'stroke-width': 1.5, style: 'cursor:pointer'
+      stroke: cssVar('--card'), 'stroke-width': 1.5, class: 'tap-target', style: 'cursor:pointer'
     });
     c.addEventListener('click', () => {
       openPanel({
@@ -1020,7 +1133,7 @@ function renderSegments() {
   const seg = DATA.segments[segKey];
   const chiEl = document.getElementById('segChiP');
   chiEl.textContent = seg.chi2_p !== null
-    ? `Chi-square across reliable levels, p = ${seg.chi2_p}${seg.chi2_p < 0.05 ? ' (significant)' : ' (not significant)'}`
+    ? `Chi-square across reliable levels, p = ${seg.chi2_p}${seg.chi2_p < 0.05 ? ' — the differences between these segments are likely real, not just chance' : ' — these differences could plausibly be chance'}`
     : '';
 
   const container = document.getElementById('segmentChart');
@@ -1066,7 +1179,7 @@ function renderSegments() {
 
     const isClipped = row.rate > maxRate;
     const bar = svgEl('rect', {
-      x: margin.left, y: y + 5, width: barW, height: rowH - 12, rx: 3, fill: color, style: 'cursor:pointer'
+      x: margin.left, y: y + 5, width: barW, height: rowH - 12, rx: 3, fill: color, class: 'tap-target', style: 'cursor:pointer'
     });
     bar.addEventListener('click', () => segmentRowPanel(seg.title, segKey, row));
     svg.appendChild(bar);
@@ -1097,7 +1210,7 @@ function renderSegments() {
   const tbody = document.createElement('tbody');
   rows.forEach(r => {
     const tr = document.createElement('tr');
-    tr.className = r.reliable ? '' : 'unreliable';
+    tr.className = (r.reliable ? '' : 'unreliable ') + 'tap-target-row';
     tr.innerHTML = `<td>${r.label}</td><td>${r.n}</td><td>${r.closed}</td><td>${pct(r.rate)}</td><td>${r.reliable ? 'Yes' : 'n<30'}</td>`;
     tr.addEventListener('click', () => segmentRowPanel(seg.title, segKey, r));
     tbody.appendChild(tr);
@@ -1141,7 +1254,7 @@ function renderOpportunity() {
     const cx = margin.left + step * i + step / 2;
     const y = yScale(b.rate);
     const rect = svgEl('rect', {
-      x: cx - bw / 2, y: y, width: bw, height: (margin.top + plotH) - y, rx: 3, fill: b.color, style: 'cursor:pointer'
+      x: cx - bw / 2, y: y, width: bw, height: (margin.top + plotH) - y, rx: 3, fill: b.color, class: 'tap-target', style: 'cursor:pointer'
     });
     rect.addEventListener('click', () => {
       if (b.scenario) openLeverPanel(b.scenario);
@@ -1185,7 +1298,7 @@ function renderOpportunity() {
     DATA.q3.scenarios.forEach((s, i) => {
       if (i === 1) return;
       const isCombo = i === 3;
-      html += `<div class="lever-card ${isCombo ? 'combined' : ''}" data-idx="${i}">
+      html += `<div class="lever-card tap-target ${isCombo ? 'combined' : ''}" data-idx="${i}">
         <div class="title">${s.name}</div>
         <div class="metrics">
           <span>Rate <b>${pct(s.rate, 2)}</b></span>

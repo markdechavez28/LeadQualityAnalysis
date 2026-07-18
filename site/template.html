@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- build: __BUILD_TIME__ -->
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -153,6 +153,7 @@
   .card-eyebrow { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 700; margin-bottom: 2px; }
   .card-row { display: flex; align-items: center; justify-content: space-between; }
 
+  .col-3 { grid-column: span 3; }
   .col-4 { grid-column: span 4; }
   .col-5 { grid-column: span 5; }
   .col-6 { grid-column: span 6; }
@@ -160,13 +161,24 @@
   .col-8 { grid-column: span 8; }
   .col-12 { grid-column: span 12; }
   @media (max-width: 900px) {
-    .col-4, .col-5, .col-6, .col-7, .col-8 { grid-column: span 12; }
+    .col-3, .col-4, .col-5, .col-6, .col-7, .col-8 { grid-column: span 12; }
   }
+
+  /* ---------- question sections ---------- */
+  .q-section { margin-bottom: 26px; }
+  .q-section:last-child { margin-bottom: 0; }
+  .q-section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .q-section-head .q-num {
+    font-size: 0.7rem; font-weight: 800; letter-spacing: 0.03em; background: var(--pill-active-bg);
+    color: var(--pill-active-ink); border-radius: 999px; padding: 4px 11px; flex: none;
+  }
+  .q-section-head .q-text { font-size: 0.92rem; font-weight: 700; color: var(--ink); }
 
   .headline-card { display: flex; flex-direction: column; gap: 14px; }
   .headline-visual {
     border-radius: 16px; padding: 22px; background: linear-gradient(135deg, var(--accent-amber), var(--accent) 55%, var(--accent-crimson));
     color: #fff; position: relative; overflow: hidden;
+    flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 130px;
   }
   .headline-visual .big-stat { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.02em; }
   .headline-visual .big-label { font-size: 0.8rem; opacity: 0.92; font-weight: 600; }
@@ -266,6 +278,50 @@
   .panel-body p.note { font-size: 0.8rem; background: var(--accent-bg); color: var(--ink); padding: 10px 12px; border-radius: 10px; }
   .panel-body p.warn { font-size: 0.8rem; background: var(--critical-bg); color: var(--ink); padding: 10px 12px; border-radius: 10px; }
 
+  /* ---------- welcome modal ---------- */
+  .welcome-overlay {
+    position: fixed; inset: 0; background: rgba(10,10,12,0.5); opacity: 0; pointer-events: none;
+    transition: opacity .25s ease; z-index: 60; display: flex; align-items: center; justify-content: center;
+    padding: 20px; backdrop-filter: blur(2px);
+  }
+  .welcome-overlay.show { opacity: 1; pointer-events: auto; }
+  .welcome-card {
+    position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 22px;
+    box-shadow: var(--shadow); max-width: 460px; width: 100%; padding: 30px 28px 26px;
+    transform: translateY(10px) scale(0.98); opacity: 0; transition: transform .25s ease, opacity .25s ease;
+  }
+  .welcome-overlay.show .welcome-card { transform: translateY(0) scale(1); opacity: 1; }
+  .welcome-card .panel-close { top: 16px; right: 16px; }
+  .welcome-badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    background: var(--accent-bg); color: var(--accent); border-radius: 999px; padding: 5px 11px; margin-bottom: 12px;
+  }
+  .welcome-card h2 { font-size: 1.25rem; margin: 0 0 12px; padding-right: 20px; letter-spacing: -0.01em; }
+  .welcome-card p { font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.6; margin: 0 0 12px; }
+  .welcome-card p.welcome-tip {
+    font-size: 0.82rem; background: var(--accent-bg); color: var(--ink); padding: 10px 12px; border-radius: 10px;
+  }
+  .welcome-card .welcome-signature { font-size: 0.82rem; color: var(--ink); margin: 0 0 16px; }
+  .welcome-card .welcome-signature b { font-weight: 700; }
+  .welcome-card .btn-dark { border: none; width: 100%; justify-content: center; padding: 11px 16px; font-size: 0.85rem; }
+
+  /* ---------- tap-to-explore hint ---------- */
+  @keyframes tapHintPop {
+    0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 0 transparent); }
+    50% { transform: translateY(-3px) scale(1.025); filter: drop-shadow(0 3px 8px rgba(255,90,46,0.45)); }
+  }
+  @keyframes tapHintFlash {
+    0%, 100% { background: transparent; }
+    50% { background: var(--accent-bg); }
+  }
+  @keyframes tapHintGlow {
+    0%, 100% { filter: drop-shadow(0 0 0 transparent); opacity: 1; }
+    50% { filter: drop-shadow(0 0 6px rgba(255,90,46,0.65)); opacity: 0.82; }
+  }
+  .tap-hint { animation: tapHintPop 0.5s ease-in-out 4; transform-box: fill-box; transform-origin: center; }
+  .tap-hint-flash { animation: tapHintFlash 0.5s ease-in-out 4; }
+  .tap-hint-glow { animation: tapHintGlow 0.5s ease-in-out 4; }
+
   @media (max-width: 760px) {
     .app { padding: 10px; }
     .shell { flex-direction: column; border-radius: 20px; }
@@ -348,12 +404,12 @@
 
       <!-- ============ OVERVIEW ============ -->
       <div class="view active" id="view-overview">
-        <div class="grid">
 
-          <div class="col-4" style="display:flex; flex-direction:column; gap:16px;">
-            <div class="card clickable headline-card" id="cardHeadline">
+        <div class="q-section">
+          <div class="q-section-head"><span class="q-num">Q1</span><span class="q-text">Is lead quality trending over time?</span></div>
+          <div class="grid">
+            <div class="card clickable headline-card col-5 tap-target" id="cardHeadline">
               <div>
-                <div class="card-eyebrow">Question 1</div>
                 <h2>Lead quality is declining</h2>
                 <p class="desc">Closed rate fell across Apr to Sep 2009. Tap for the significance tests.</p>
               </div>
@@ -365,9 +421,67 @@
               </div>
             </div>
 
-            <div class="card clickable" id="cardLever">
+            <div class="col-4" style="display:flex; flex-direction:column; gap:16px;">
+              <div class="card">
+                <div class="card-row">
+                  <div>
+                    <div class="card-eyebrow">Volume</div>
+                    <h2 id="ovTotalLeads">3,021 leads</h2>
+                  </div>
+                </div>
+                <p class="desc">Weekly volume, most recent 8 weeks. Tap a bar for that week.</p>
+                <div id="activityChart"></div>
+              </div>
+
+              <div class="card" style="flex:1;">
+                <div class="card-eyebrow">Significance</div>
+                <h2>Closed rate trend</h2>
+                <p class="desc">Weekly rate with the fitted trend line.</p>
+                <div id="closedRateLineChart"></div>
+              </div>
+            </div>
+
+            <div class="card col-3">
+              <div class="card-eyebrow">Methodology</div>
+              <h2>Quality breakdown</h2>
+              <p class="desc">Tap a row for the exact definition.</p>
+              <div id="qualityRows"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="q-section">
+          <div class="q-section-head"><span class="q-num">Q2</span><span class="q-text">Which segments drive lead quality?</span></div>
+          <div class="grid">
+            <div class="col-6">
+              <div class="card">
+                <div class="card-eyebrow">Traffic source</div>
+                <h2>Traffic source mix</h2>
+                <p class="desc">Share of leads by source. Tap a slice or legend row for its Closed rate.</p>
+                <div id="donutWrap" style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+                  <div id="donutChart"></div>
+                  <div id="donutLegend" style="flex:1; min-width:180px;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="card">
+                <div class="card-eyebrow">Strongest driver</div>
+                <h2>Google-Display underperforms every other channel</h2>
+                <p class="desc">4.1% Closed rate versus 9.9% for Google-Search, on 639 leads. Significant at p &lt; 0.001 even after controlling for widget, state and debt level.</p>
+                <button class="learn-more-btn" id="openSegmentsBtn">Open the segment explorer &rarr;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="q-section">
+          <div class="q-section-head"><span class="q-num">Q3</span><span class="q-text">How do we close the gap to target?</span></div>
+          <div class="grid">
+            <div class="card clickable col-7 tap-target" id="cardLever">
               <div class="card-row">
-                <div class="card-eyebrow">Question 3</div>
+                <div class="card-eyebrow">Path to target</div>
                 <span class="badge-pill good" id="ovGapBadge">+1.64pp</span>
               </div>
               <h2>Path to 9.6%</h2>
@@ -375,36 +489,8 @@
               <div id="miniWaterfall"></div>
               <button class="learn-more-btn">See the levers &rarr;</button>
             </div>
-          </div>
 
-          <div class="col-4" style="display:flex; flex-direction:column; gap:16px;">
-            <div class="card">
-              <div class="card-row">
-                <div>
-                  <div class="card-eyebrow">Volume</div>
-                  <h2 id="ovTotalLeads">3,021 leads</h2>
-                </div>
-              </div>
-              <p class="desc">Weekly volume, most recent 8 weeks. Tap a bar for that week.</p>
-              <div id="activityChart"></div>
-            </div>
-
-            <div class="card" style="flex:1;">
-              <div class="card-eyebrow">Q1 significance</div>
-              <h2>Closed rate trend</h2>
-              <p class="desc">Weekly rate with the fitted trend line.</p>
-              <div id="closedRateLineChart"></div>
-            </div>
-          </div>
-
-          <div class="col-4" style="display:flex; flex-direction:column; gap:16px;">
-            <div class="card">
-              <div class="card-eyebrow">Methodology</div>
-              <h2>Quality breakdown</h2>
-              <p class="desc">Tap a row for the exact definition.</p>
-              <div id="qualityRows"></div>
-            </div>
-            <div class="accent-panel" style="flex:1;">
+            <div class="accent-panel col-5">
               <div>
                 <div class="tag">Target progress</div>
                 <div class="big" id="targetBig">9.75%</div>
@@ -416,29 +502,8 @@
               </div>
             </div>
           </div>
-
-          <div class="col-6">
-            <div class="card">
-              <div class="card-eyebrow">Question 2</div>
-              <h2>Traffic source mix</h2>
-              <p class="desc">Share of leads by source. Tap a slice or legend row for its Closed rate.</p>
-              <div id="donutWrap" style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
-                <div id="donutChart"></div>
-                <div id="donutLegend" style="flex:1; min-width:180px;"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="card">
-              <div class="card-eyebrow">Question 2, strongest driver</div>
-              <h2>Google-Display underperforms every other channel</h2>
-              <p class="desc">4.1% Closed rate versus 9.9% for Google-Search, on 639 leads. Significant at p &lt; 0.001 even after controlling for widget, state and debt level.</p>
-              <button class="learn-more-btn" id="openSegmentsBtn">Open the segment explorer &rarr;</button>
-            </div>
-          </div>
-
         </div>
+
       </div>
 
       <!-- ============ TREND ============ -->
@@ -459,17 +524,17 @@
             </div>
           </div>
           <div class="col-4" style="display:flex; flex-direction:column; gap:16px;">
-            <div class="card clickable" data-panel="stat-logistic">
+            <div class="card clickable tap-target" data-panel="stat-logistic">
               <div class="card-eyebrow">Logistic regression</div>
               <div class="stat-num" style="color:var(--good)">p = 0.0072</div>
               <div class="stat-sub">Closed as a function of week number</div>
             </div>
-            <div class="card clickable" data-panel="stat-mk">
+            <div class="card clickable tap-target" data-panel="stat-mk">
               <div class="card-eyebrow">Mann-Kendall test</div>
               <div class="stat-num" style="color:var(--good)">p = 0.0131</div>
               <div class="stat-sub">Non-parametric check on the weekly series</div>
             </div>
-            <div class="card clickable" data-panel="stat-good">
+            <div class="card clickable tap-target" data-panel="stat-good">
               <div class="card-eyebrow">Secondary check</div>
               <div class="stat-num" style="color:var(--ink-muted)">p = 0.807</div>
               <div class="stat-sub">Good rate trend, not significant</div>
@@ -586,6 +651,17 @@
   <div class="panel-body" id="panelBody"></div>
 </aside>
 
+<div class="welcome-overlay" id="welcomeOverlay">
+  <div class="welcome-card">
+    <button class="panel-close" id="welcomeClose">&times;</button>
+    <div class="welcome-badge">Interactive companion</div>
+    <h2>Welcome. This dashboard is my RZR Analytics Challenge submission.</h2>
+    <p>I'm <b>Mark Jerome De Chavez</b>, and this page is the interactive companion to my full case-study report analyzing six months of lead quality data. Building it is part of why I'd like to work with RZR: I enjoy turning a messy dataset into a clear, defensible story, and wanted this submission to show both the analysis and how I'd communicate it.</p>
+    <p class="welcome-tip">Tip: almost everything here is tappable. Tap a card, chart bar, dot, slice or table row to open a detail panel with the exact numbers behind it. Watch for a quick pulse in a moment, it marks what you can tap.</p>
+    <button class="btn-dark" id="welcomeGotIt">Got it, let's explore &rarr;</button>
+  </div>
+</div>
+
 <script id="site-data" type="application/json">
 __DATA_JSON__
 </script>
@@ -664,6 +740,41 @@ document.getElementById('panelClose').addEventListener('click', closePanel);
 panelOverlay.addEventListener('click', closePanel);
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
 
+/* ============================== welcome modal ============================== */
+const welcomeOverlay = document.getElementById('welcomeOverlay');
+
+function triggerTapHints() {
+  document.querySelectorAll('.tap-target').forEach(el => {
+    el.classList.remove('tap-hint');
+    void el.offsetWidth;
+    el.classList.add('tap-hint');
+  });
+  document.querySelectorAll('.tap-target-row').forEach(el => {
+    el.classList.remove('tap-hint-flash');
+    void el.offsetWidth;
+    el.classList.add('tap-hint-flash');
+  });
+  document.querySelectorAll('.tap-target-glow').forEach(el => {
+    el.classList.remove('tap-hint-glow');
+    void el.getBBox && el.getBBox();
+    el.classList.add('tap-hint-glow');
+  });
+  setTimeout(() => {
+    document.querySelectorAll('.tap-hint, .tap-hint-flash, .tap-hint-glow').forEach(el => el.classList.remove('tap-hint', 'tap-hint-flash', 'tap-hint-glow'));
+  }, 2100);
+}
+
+function closeWelcome() {
+  if (!welcomeOverlay.classList.contains('show')) return;
+  welcomeOverlay.classList.remove('show');
+  triggerTapHints();
+}
+setTimeout(() => welcomeOverlay.classList.add('show'), 1500);
+document.getElementById('welcomeClose').addEventListener('click', closeWelcome);
+document.getElementById('welcomeGotIt').addEventListener('click', closeWelcome);
+welcomeOverlay.addEventListener('click', (e) => { if (e.target === welcomeOverlay) closeWelcome(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeWelcome(); });
+
 /* ---- static panels ---- */
 document.getElementById('methodologyBtn').addEventListener('click', () => {
   openPanel({
@@ -695,19 +806,21 @@ function statPanels(key) {
     'stat-logistic': {
       eyebrow: 'Q1, significance test 1', title: 'Logistic regression',
       stats: [{ l: 'p-value', v: '0.0072' }, { l: 'Odds ratio', v: '0.974 / week' }],
-      body: `<p>A logistic regression models whether each individual lead closed as a function of the week it was created. The odds of closing fall by about 2.6% per week, and the relationship is significant at p = 0.0072, comfortably under the usual 0.05 threshold.</p>
+      body: `<p class="note">In plain terms: leads created later in the six-month window were consistently less likely to close than leads created earlier. That's not random noise, it's a real pattern.</p>
+      <p>A logistic regression models whether each individual lead closed as a function of the week it was created. The odds of closing fall by about 2.6% per week, and the relationship is significant at p = 0.0072, comfortably under the usual 0.05 threshold (the standard bar for "this probably isn't just chance").</p>
       <p>Over the full 26 week span, that compounds to roughly half the odds of closing by late September compared with early April.</p>`,
     },
     'stat-mk': {
       eyebrow: 'Q1, significance test 2', title: 'Mann-Kendall trend test',
       stats: [{ l: 'p-value', v: '0.0131' }, { l: 'z-score', v: '-2.48' }],
-      body: `<p>Mann-Kendall is a non-parametric test that checks whether a series is generally rising or falling without assuming a specific shape. Run on the weekly Closed rate series, it confirms a significant decreasing trend, agreeing with the logistic regression.</p>`,
+      body: `<p class="note">In plain terms: this is a second, differently-built test on the same question, is the trend really going down. It agrees with the first one, which makes the decline more trustworthy.</p>
+      <p>Mann-Kendall is a non-parametric test, meaning it checks whether a series is generally rising or falling without assuming the data follows any particular curve or distribution. Run on the weekly Closed rate series, it confirms a significant decreasing trend, agreeing with the logistic regression above.</p>`,
     },
     'stat-good': {
       eyebrow: 'Q1, secondary check', title: 'Good rate trend',
       stats: [{ l: 'p-value', v: '0.807' }, { l: 'Result', v: 'Not significant' }],
-      body: `<p>The same trend test, run on the broader Good rate (Closed plus EP-stage progress) instead of Closed alone, shows no significant trend.</p>
-      <p class="note">This is a useful clue. Leads seem to advance through the pipeline at a stable rate over time, but convert to a final close less often as the year goes on. That points at downstream sales execution rather than declining lead quality at the point of sale.</p>`,
+      body: `<p>The same trend test, run on the broader Good rate (Closed plus EP-stage progress) instead of Closed alone, shows no significant trend, p = 0.807 is nowhere near the 0.05 bar.</p>
+      <p class="note">In plain terms: leads are still moving through the pipeline at a steady pace over time, they just convert into a final close less often as the months go on. That points at something happening downstream in sales execution, rather than the leads themselves getting worse.</p>`,
     },
   };
   return map[key];
@@ -778,7 +891,7 @@ function renderQualityRows() {
   el.innerHTML = '';
   rows.forEach(r => {
     const row = document.createElement('div');
-    row.className = 'kv-row';
+    row.className = 'kv-row tap-target';
     row.innerHTML = `<span class="kv-label">${r.label}</span>
       <span class="kv-bar-wrap"><span class="kv-bar" style="width:${(r.n / max * 100).toFixed(1)}%; background:${r.color};"></span></span>
       <span class="kv-val">${pct(r.n / max, 1)}</span>`;
@@ -820,7 +933,7 @@ function renderActivity() {
     const x = 8 + i * ((W - 16) / weeks.length);
     const h = ((w.n / max) * (H - margin.top - margin.bottom));
     const y = H - margin.bottom - h;
-    const rect = svgEl('rect', { x, y, width: bw, height: h, rx: 4, fill: cssVar('--accent'), 'fill-opacity': 0.85, style: 'cursor:pointer' });
+    const rect = svgEl('rect', { x, y, width: bw, height: h, rx: 4, fill: cssVar('--accent'), 'fill-opacity': 0.85, class: 'tap-target', style: 'cursor:pointer' });
     rect.addEventListener('click', () => {
       openPanel({
         eyebrow: 'Weekly volume', title: 'Week of ' + w.week,
@@ -855,7 +968,7 @@ function renderClosedRateLine() {
   svg.appendChild(svgEl('path', { d: path, fill: 'none', stroke: cssVar('--accent'), 'stroke-width': 2 }));
 
   weeks.forEach((w, i) => {
-    const c = svgEl('circle', { cx: xScale(i), cy: yScale(w.rate), r: 3.5, fill: cssVar('--card'), stroke: cssVar('--accent'), 'stroke-width': 2, style: 'cursor:pointer' });
+    const c = svgEl('circle', { cx: xScale(i), cy: yScale(w.rate), r: 3.5, fill: cssVar('--card'), stroke: cssVar('--accent'), 'stroke-width': 2, class: 'tap-target', style: 'cursor:pointer' });
     c.addEventListener('click', () => {
       openPanel({
         eyebrow: 'Weekly Closed rate', title: 'Week of ' + w.week,
@@ -894,7 +1007,7 @@ function renderDonut() {
     const circle = svgEl('circle', {
       cx, cy, r, fill: 'none', stroke: DONUT_COLORS[i % DONUT_COLORS.length], 'stroke-width': sw,
       'stroke-dasharray': `${Math.max(dash - 2, 0)} ${circumference - dash + 2}`,
-      'stroke-dashoffset': -offset, transform: `rotate(-90 ${cx} ${cy})`, style: 'cursor:pointer',
+      'stroke-dashoffset': -offset, transform: `rotate(-90 ${cx} ${cy})`, class: 'tap-target-glow', style: 'cursor:pointer',
     });
     circle.addEventListener('click', () => segmentRowPanel('Traffic source', 'PartnerClean', row));
     svg.appendChild(circle);
@@ -911,7 +1024,7 @@ function renderDonut() {
   legendEl.innerHTML = '';
   rows.forEach((row, i) => {
     const div = document.createElement('div');
-    div.className = 'legend-row';
+    div.className = 'legend-row tap-target';
     div.innerHTML = `<span class="legend-dot" style="background:${DONUT_COLORS[i % DONUT_COLORS.length]};"></span>
       <span class="legend-label">${row.label}</span>
       <span class="legend-val">${pct(row.rate)}</span>`;
@@ -989,7 +1102,7 @@ function renderTrend() {
     const r = 4 + (p.n / maxN) * 8;
     const c = svgEl('circle', {
       cx: xScale(p.x), cy: yScale(p.rate), r: r, fill: cssVar('--accent'), 'fill-opacity': 0.6,
-      stroke: cssVar('--card'), 'stroke-width': 1.5, style: 'cursor:pointer'
+      stroke: cssVar('--card'), 'stroke-width': 1.5, class: 'tap-target', style: 'cursor:pointer'
     });
     c.addEventListener('click', () => {
       openPanel({
@@ -1020,7 +1133,7 @@ function renderSegments() {
   const seg = DATA.segments[segKey];
   const chiEl = document.getElementById('segChiP');
   chiEl.textContent = seg.chi2_p !== null
-    ? `Chi-square across reliable levels, p = ${seg.chi2_p}${seg.chi2_p < 0.05 ? ' (significant)' : ' (not significant)'}`
+    ? `Chi-square across reliable levels, p = ${seg.chi2_p}${seg.chi2_p < 0.05 ? ' — the differences between these segments are likely real, not just chance' : ' — these differences could plausibly be chance'}`
     : '';
 
   const container = document.getElementById('segmentChart');
@@ -1066,7 +1179,7 @@ function renderSegments() {
 
     const isClipped = row.rate > maxRate;
     const bar = svgEl('rect', {
-      x: margin.left, y: y + 5, width: barW, height: rowH - 12, rx: 3, fill: color, style: 'cursor:pointer'
+      x: margin.left, y: y + 5, width: barW, height: rowH - 12, rx: 3, fill: color, class: 'tap-target', style: 'cursor:pointer'
     });
     bar.addEventListener('click', () => segmentRowPanel(seg.title, segKey, row));
     svg.appendChild(bar);
@@ -1097,7 +1210,7 @@ function renderSegments() {
   const tbody = document.createElement('tbody');
   rows.forEach(r => {
     const tr = document.createElement('tr');
-    tr.className = r.reliable ? '' : 'unreliable';
+    tr.className = (r.reliable ? '' : 'unreliable ') + 'tap-target-row';
     tr.innerHTML = `<td>${r.label}</td><td>${r.n}</td><td>${r.closed}</td><td>${pct(r.rate)}</td><td>${r.reliable ? 'Yes' : 'n<30'}</td>`;
     tr.addEventListener('click', () => segmentRowPanel(seg.title, segKey, r));
     tbody.appendChild(tr);
@@ -1141,7 +1254,7 @@ function renderOpportunity() {
     const cx = margin.left + step * i + step / 2;
     const y = yScale(b.rate);
     const rect = svgEl('rect', {
-      x: cx - bw / 2, y: y, width: bw, height: (margin.top + plotH) - y, rx: 3, fill: b.color, style: 'cursor:pointer'
+      x: cx - bw / 2, y: y, width: bw, height: (margin.top + plotH) - y, rx: 3, fill: b.color, class: 'tap-target', style: 'cursor:pointer'
     });
     rect.addEventListener('click', () => {
       if (b.scenario) openLeverPanel(b.scenario);
@@ -1185,7 +1298,7 @@ function renderOpportunity() {
     DATA.q3.scenarios.forEach((s, i) => {
       if (i === 1) return;
       const isCombo = i === 3;
-      html += `<div class="lever-card ${isCombo ? 'combined' : ''}" data-idx="${i}">
+      html += `<div class="lever-card tap-target ${isCombo ? 'combined' : ''}" data-idx="${i}">
         <div class="title">${s.name}</div>
         <div class="metrics">
           <span>Rate <b>${pct(s.rate, 2)}</b></span>
